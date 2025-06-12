@@ -1,4 +1,4 @@
-
+const { mainModule } = require('process');
 const readline = require('readline');
 
 function askQuestion(query) {
@@ -12,10 +12,15 @@ function askQuestion(query) {
     }));
 }
 async function Main() {
+ try
     let solarHours = parseFloat(await askQuestion("Enter value for Solar Hours in hours: "));                                       
     let solarQuantity = parseFloat(await askQuestion("Enter value for Solar Quantity: "));  
-    let wattage = parseFloat(await askQuestion("Enter wattage of solar panels in watts: ")); // <-- ADD THIS LINE
-
+    let wattage = parseFloat(await askQuestion("Enter wattage of solar panels in watts: ")); }
+    catch (error) {
+          console.error("Error in input: ", error);
+          return;
+     
+    }
 
 async function ConsumptionProduction(){
 
@@ -23,7 +28,7 @@ async function ConsumptionProduction(){
    async function calculateDailyConsumption() {
                 let totalenergy = 0;
 
-        let count = await askQuestion("Enter the number of energy consumption items you want to input:");
+       let count = await askQuestion("Enter the number of energy consumption items you want to input:");
         count = parseInt(count);
         for (let i =0; i< count; i++){ 
             
@@ -47,7 +52,7 @@ async function ConsumptionProduction(){
     }
     
     // Call the functions to perform calculations
-    await calculateDailyConsumption();
+    // await calculateDailyConsumption();
     calculateDailyEnergyProduction();
                 
 }
@@ -128,12 +133,14 @@ calculateMonthlyEnergyOutput();
 calculateSolarPowerCapacity();
 calculateActualSolarPowerCapacity()
 }
-await EnergyOutput();
+// await EnergyOutput();
 }
 //run program function
-   await ConsumptionProduction();
+//    await ConsumptionProduction();
 
 
 //run main function
 Main();
-   
+
+
+
