@@ -15,6 +15,7 @@ class SolarCalculator1 {
     }
 //Commercial Solar Panel Power Calculation
 
+//calculates energy spent by solar panels daily by only one panel
 calculateDailyEnergyOutput(wattage, solarHours, efficiency){
 
     const wattage = prompt("Enter wattage of solar panels in watts");
@@ -23,6 +24,7 @@ calculateDailyEnergyOutput(wattage, solarHours, efficiency){
     console.log("Daily Energy Output in kWh: " + energykws);
     this,DailyEnergyOutput = energykwh;
 }
+//calculates total energy output by all panels daily            
 calculateTotalDailyEnergyOutput(numberOfPanels, DailyEnergyOutput){
 
     const numberOfPanels = prompt("Enter value for Number of Panels");
@@ -30,13 +32,14 @@ calculateTotalDailyEnergyOutput(numberOfPanels, DailyEnergyOutput){
     console.log("Total Daily Energy Output in kWh: " + total);
     this.TotalDailyEnergyOutput += total;
 }
-
+//calculates monthly energy output by multiplying daily output by number of days in month
+//in case of a 0, negative or invalid number of days, it will prompt user to enter a valid number                               
 calculateMonthlyEnergyOutput(TotalDailyEnergyOutput, days){
     const days = prompt("Enter number of days in the month");
     if(days >= 0){
         console.log("Please enter a valid number of days.");
     }
-    else if(days == 28){
+    else if(days == 28 || days == 29){
         var monthly = TotalDailyEnergyOutput * 28;
         console.log("Monthly Energy Output in kWh: " + monthly);
         this.monthlyEnergyOutput += monthly;

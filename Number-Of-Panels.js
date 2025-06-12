@@ -11,7 +11,7 @@ class SolarCalculator1 {
         this.actualCapacitywatts = actualCapacitywatts;
         this.numberOfPanels = numberOfPanels;
     }
-
+//calculates number of required panels based on single panel capacity and actual capacity in watts
     calculateNumberOfPanels(siglePanelCapacity, actualCapacitywatts){
     singlePanelCapacity = prompt("Enter value for Single Panel Capacity in watts");
     actualCapacitywatts = prompt("Enter value for Actual Capacity in watts");

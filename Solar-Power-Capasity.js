@@ -10,7 +10,7 @@ class SolarCalculator2 {
         calculateSolarPowerCapacity();
         calculateActualSolarPowerCapacity();
     }
-
+        // Calculate Solar Power Capacity based on wattage, solar quantity, and efficiency 
         calculateSolarPowerCapacity(wattage, solarQuantity, efficiency){
         const solarQuantity = prompt("Enter value for Solar Quantity");
         const wattage = prompt("Enter wattage of solar panels in watts");
@@ -18,7 +18,8 @@ class SolarCalculator2 {
         this.capacityWatts += capacity; 
         console.log("Solar Power Capacity in watts: " + this.capacityWatts);
         }
-
+        // Calculate Actual Solar Power Capacity based on wattage, solar hours, solar quantity, and efficiency in 
+        // difference with just solar power capacity
         calculateActualSolarPowerCapacity( wattage, solarHours, solarQuantity, efficiency){
 
         const solarQuantity = prompt("Enter value for Solar Quantity");
