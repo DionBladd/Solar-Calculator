@@ -1,1 +1,0 @@
-Yeah it's ugly, but it works. Calculates how many solar panels you'll need to stop giving money to power companies. Enter your kWh usage and get instant estimates.
