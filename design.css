@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fdfdfd;
+    color: #333;
+    line-height: 2;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+h1 {
+    text-align: center;
+    color: linear-gradient(to right, #a559b4, #5345a0);
+ 
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+
+}
+
+input[type="text"], 
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 8px 15px;
+    margin-right: 10px;
+    margin-top: 10px;
+    transition: all 0.3s ease  ;
+    cursor: pointer;
+    position: relative;
+
+}
+
+#result {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.button {
+    transition: all 0.3s ease;
+}
+
+#calculateBtn:hover {
+     padding-top: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+
+        background: linear-gradient(to right, #a559b4, #5345a0);
+    color: white;
+    border: none;
+}
+#resetBtn:hover {
+     padding-top: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+        background: linear-gradient(to right, #a559b4, #5345a0);
+    color: white;
+    border: none;
+ 
+}
+
+/* Keyframe animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.element {
+    animation: fadeIn 1s ease-in;
+}
+
+@media (max-width: 600px) {
+    /* No need to repeat the same styles as above */
+    /* Add only mobile-specific overrides here */
+    body {
+        padding: 15px;
+    }
+}
+P, LI, .input-group{
+    margin-bottom: 25px;
+}
+
+#result {
+
+    color: #ffffff;
+        background: linear-gradient(to right, #a559b4, #5345a0);}
+
+input[type="radio"] {
+  border-color: #5345a0; 
+  background-color: #a559b4;  }
+
+  input[type="radio"]:checked::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  margin: 3px;
+  border-radius: 50%;
+  background: white;
+}
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  outline: none;
+  margin-right: 8px;
+  position: relative;
+  top: 4px;
+}

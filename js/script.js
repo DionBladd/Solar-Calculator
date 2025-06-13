@@ -82,5 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (hybridRadio.checked) {
             modeDisplay.textContent = "You are in Hybrid mode";
         }
-    }                       
+    }  
+                    
 });

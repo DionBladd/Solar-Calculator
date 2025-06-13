@@ -3,48 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Solar Panel Calculator</title>
-        <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .input-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        button {
-            padding: 8px 15px;
-            margin-right: 10px;
-            margin-top: 10px;
-        }
-        #result {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            background-color: #f9f9f9;
-        }
-    </style>
+
 </head>
 <body>
     <h1>Solar Quantity Need Calculator</h1>
     <div>
         <label>Select preferred system type</label>
-        <input type="radio" name="system" value="onGrid" id="onGrid" checked> On Grid
-        <input type="radio" name="system" value="offGrid" id="offGrid"> Off Grid  
-        <input type="radio" name="system" value="hybrid" id="hybrid"> Hybrid   
+        <input type="radio" name="system" value="onGrid" class="radiobtn" id="onGrid" checked> On Grid
+        <input type="radio" name="system" value="offGrid" class="radiobtn" id="offGrid"> Off Grid  
+        <input type="radio" name="system" value="hybrid" class="radiobtn" id="hybrid"> Hybrid   
     </div>
     <div>
          <p id="modeDisplay"></p>
     <div>
         <label>Would you prefer to use Yearly, Monthly or Daily consumption values?</label>
-        <input type="radio" name="period" value="yearly" id="yearly"> Yearly       
-        <input type="radio" name="period" value="monthly" id="monthly" checked> Monthly 
-        <input type="radio" name="period" value="daily" id="daily"> Daily  
+        <input type="radio" name="period" value="yearly" id="yearly" class="radiobtn"> Yearly       
+        <input type="radio" name="period" value="monthly" id="monthly" checked class="radiobtn"> Monthly 
+        <input type="radio" name="period" value="daily" id="daily" class="radiobtn"> Daily  
     </div>
 
     <div>         
@@ -53,11 +28,15 @@
     </div>   
 
     <div>
-        <button id="calculateBtn">Calculate</button>
-        <button id="resetBtn">Reset</button>   
+        <button id="calculateBtn" class="active-button">Calculate</button>
+        <button id="resetBtn" class="active-button">Reset</button>   
     </div>
     <div id="result"></div>
+    <div class="gif-container">
+  <img src="energy-solar-animation.gif" alt="Dynamic GIF" class="dynamic-gif">
+</div>
 
     <script src="js/script.js"></script>
+<link rel="stylesheet" href="design.css">
 </body>
 </html>
