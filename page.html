@@ -2,35 +2,62 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Calculate your Solar panel quantity</title>
+    <title>Solar Panel Calculator</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        button {
+            padding: 8px 15px;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
-        <head> Solar Quantity need Calculator</head>
-        <p>
-       <label for="system">Select prefered system type</label>
-      <input type ="radio" name="system" value="On Grid"> On Grid
-     <input type ="radio" name="system" value="Off Grid"> Off Grid  
-     <input type ="radio" name="system" value="Hybrid"> Hybrid   
-        </p>
-        <p>
-    <label for="radio">Would you prefer to use Yearly or Montly consumption values?</label>
-       <input type="radio" name="consumption" value="Yearly"> Yearly       
-    <input type="radio" name="consumption" value="Monthly"> Monthly 
-        </p>
-        <p>
-<label for="consumption">Enter your consumption value in kWh</label>
-   <input type="number" id="consumption" name="consumption" placeholder="Enter your consumption value">
-</p>
-<p>
-                               
-<button id="calculate">Calculate</button>
-</p>
-<p>
-<button id="reset">Reset</button>   
-</p>
-  <script src="js/ActualFinalFullcalc.cjs">
+    <h1>Solar Quantity Need Calculator</h1>
+    <div>
+        <label>Select preferred system type</label>
+        <input type="radio" name="system" value="onGrid" id="onGrid" checked> On Grid
+        <input type="radio" name="system" value="offGrid" id="offGrid"> Off Grid  
+        <input type="radio" name="system" value="hybrid" id="hybrid"> Hybrid   
+    </div>
+    <div>
+         <p id="modeDisplay"></p>
+    <div>
+        <label>Would you prefer to use Yearly, Monthly or Daily consumption values?</label>
+        <input type="radio" name="period" value="yearly" id="yearly"> Yearly       
+        <input type="radio" name="period" value="monthly" id="monthly" checked> Monthly 
+        <input type="radio" name="period" value="daily" id="daily"> Daily  
+    </div>
 
+    <div>         
+        <label for="consumption">Enter your consumption value in kWh</label>
+        <input type="number" id="consumption" name="consumption" placeholder="10"  required>
+    </div>   
 
-  </script> 
+    <div>
+        <button id="calculateBtn">Calculate</button>
+        <button id="resetBtn">Reset</button>   
+    </div>
+    <div id="result"></div>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
