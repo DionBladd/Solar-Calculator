@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate your Solar panel quantity</title>
+</head>
+<body>
+        <head> Solar Quantity need Calculator</head>
+        <p>
+       <label for="system">Select prefered system type</label>
+      <input type ="radio" name="system" value="On Grid"> On Grid
+     <input type ="radio" name="system" value="Off Grid"> Off Grid  
+     <input type ="radio" name="system" value="Hybrid"> Hybrid   
+        </p>
+        <p>
+    <label for="radio">Would you prefer to use Yearly or Montly consumption values?</label>
+       <input type="radio" name="consumption" value="Yearly"> Yearly       
+    <input type="radio" name="consumption" value="Monthly"> Monthly 
+        </p>
+        <p>
+<label for="consumption">Enter your consumption value in kWh</label>
+   <input type="number" id="consumption" name="consumption" placeholder="Enter your consumption value">
+</p>
+<p>
+                               
+<button id="calculate">Calculate</button>
+</p>
+<p>
+<button id="reset">Reset</button>   
+</p>
+  <script src="js/ActualFinalFullcalc.cjs">
+
+
+  </script> 
+</body>
+</html>
