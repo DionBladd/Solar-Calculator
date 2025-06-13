@@ -50,27 +50,28 @@ function askQuestion(query) {
         console.log("You are in offGrid mode");
         console.log("You need " + offGrid() + " solar panels to meet your daily consumption.");
     }
-    else if (mode === "hybrid") 
+    else if (mode === "hybrid") {
         console.log("You are in Hybrid mode");
         console.log("You need " + hybrid() + " solar panels to meet your daily consumption.");
     
+    }
     
 
     function onGrid(){
 
-        return consumptionDaily / panelWattage;           
+        return (consumptionDaily / panelWattage);           
 
     }
 
 
     function offGrid(){
-        let totalNeededEnergy = consumptionDaily * storage * systemLoss;
-        return totalNeededEnergy / (panelWattage *  solarHours);
+        let totalNeededEnergy = (consumptionDaily * storage) * (1+systemLoss);
+        return totalNeededEnergy / panelWattage ;
 }
 
     function hybrid(){
-        let solarEnergyNeeded = consumptionDaily * solarFraction * systemLoss;
-        return solarEnergyNeeded / (panelWattage * solarHours);
+        let solarEnergyNeeded = (consumptionDaily * solarFraction) * (1+systemLoss);
+        return solarEnergyNeeded / panelWattage;
     }
 
 }
