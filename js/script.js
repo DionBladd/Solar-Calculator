@@ -24,14 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const storage = 1.5;
     const solarFraction = 0.7;
 
-    if (roofNo.checked) {
-            resultDiv.innerHTML = `
-        <div class="result-box">
-            <p>Sorry, unfortunately you don't have enough space for solar panels.</p>
-        </div>
-    `;
-    return;
-}
+
 
     // Event listeners
     calculateBtn.addEventListener('click', calculatePanels);
@@ -41,6 +34,15 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     
 function calculatePanels() {
+
+        if (roofNo.checked) {
+            resultDiv.innerHTML = `
+        <div class="result-box">
+            <p>Sorry, unfortunately you don't have enough space for solar panels.</p>
+        </div>
+    `;
+    return;
+}
     // Get selected system type
     let system;
     if (onGridRadio.checked) system = 'onGrid';
