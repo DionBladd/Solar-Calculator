@@ -3,40 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <title>Solar Panel Calculator</title>
-
+    <link rel="stylesheet" href="design.css">
 </head>
 <body>
-    <h1>Solar Quantity Need Calculator</h1>
-    <div>
-        <label>Select preferred system type</label>
-        <input type="radio" name="system" value="onGrid" class="radiobtn" id="onGrid" checked> On Grid
-        <input type="radio" name="system" value="offGrid" class="radiobtn" id="offGrid"> Off Grid  
-        <input type="radio" name="system" value="hybrid" class="radiobtn" id="hybrid"> Hybrid   
-    </div>
-    <div>
-         <p id="modeDisplay"></p>
-    <div>
-        <label>Would you prefer to use Yearly, Monthly or Daily consumption values?</label>
-        <input type="radio" name="period" value="yearly" id="yearly" class="radiobtn"> Yearly       
-        <input type="radio" name="period" value="monthly" id="monthly" checked class="radiobtn"> Monthly 
-        <input type="radio" name="period" value="daily" id="daily" class="radiobtn"> Daily  
-    </div>
+    <div class="container">
+        <h1>Solar Quantity Need Calculator</h1>
+        
+        <div class="input-group">
+            <label>Select preferred system type
+                <span class="info-icon" title="On Grid: fully independent. Off Grid: connected to utility. Hybrid: both.">ℹ️</span>
+            </label>
+            <div>
+                <input type="radio" name="system" value="onGrid" id="onGrid" checked> 
+                <label for="onGrid">On Grid</label>
+                
+                <input type="radio" name="system" value="offGrid" id="offGrid"> 
+                <label for="offGrid">Off Grid</label>  
+                
+                <input type="radio" name="system" value="hybrid" id="hybrid"> 
+                <label for="hybrid">Hybrid</label>   
+            </div>
+            <p id="modeDisplay"></p>
+        </div>
 
-    <div>         
-        <label for="consumption">Enter your consumption value in kWh</label>
-        <input type="number" id="consumption" name="consumption" placeholder="10"  required>
-    </div>   
+        <div class="input-group">
+            <label>Would you prefer to use Yearly, Monthly or Daily consumption values?
+                <span class="info-icon" title="Yearly: average over a year. Monthly: average over a month. Daily: average per day.">ℹ️</span>    
+            </label>
+            <div>
+                <input type="radio" name="period" value="yearly" id="yearly"> 
+                <label for="yearly">Yearly</label>       
+                
+                <input type="radio" name="period" value="monthly" id="monthly" checked> 
+                <label for="monthly">Monthly</label> 
+                
+                <input type="radio" name="period" value="daily" id="daily"> 
+                <label for="daily">Daily</label>  
+            </div>
+        </div>
 
-    <div>
-        <button id="calculateBtn" class="active-button">Calculate</button>
-        <button id="resetBtn" class="active-button">Reset</button>   
-    </div>
-    <div id="result"></div>
-    <div class="gif-container">
-  <img src="energy-solar-animation.gif" alt="Dynamic GIF" class="dynamic-gif">
+        <div class="input-group">         
+            <label for="consumption">Enter your consumption value in kWh
+                <span class="info-icon" title="kWh: kilowatt-hour, a measure of energy consumption.">  ℹ️ </span>
+            </label>
+            <input type="number" id="consumption" name="consumption" placeholder="10" required>
+        </div>   
+
+        <div class="input-group">
+            <label for="solarHours" >Select your active sun hours
+                <span class="info-icon" title="Active sun hours: average hours of sunlight available for solar energy generation.">ℹ️ </span>
+            </label>
+            <select id="solarHours" name="solarHours">
+                <option value="5" selected>5 hours</option>
+                <option value="6">6 hours</option>
+                <option value="7">7 hours</option>
+                <option value="8">8 hours</option>
+                <option value="9">9 hours</option>
+                <option value="10">10 hours</option>
+                <option value="11">11 hours</option>
+                <option value="12">12 hours</option>
+                <option value="13">13 hours</option>
+                <option value="14">14 hours</option>
+            </select>
+        </div>
+        <div class="input-group">
+           <label>Do you have over 25m² of roof space?
+                <span class="info-icon" title="Roof space: area available for solar panel installation.">ℹ️</span>
+           </label>
+           <div class ="radio-row">
+            <input type="radio" name="roofSpace" value="yes" id="roofYes" checked>
+            <label for="roofYes">Yes</label>
+
+            <input type="radio" name="roofSpace" value="no" id="roofNo">
+            <label for="roofNo"></label>
+            <label for="roofNo">No</label>
+            </div>
+                    </div>  
+                    <div class="input-group">
+  <label for="batteryType">Choose battery type:
+    <span title="Gel: cheap but bulky. Lithium: light, fast, lasts longer.">ℹ️</span>
+  </label>
+  <select id="batteryType">
+    <option value="gel">Gel Accumulator</option>
+    <option value="lithium">Lithium Battery</option>
+  </select>
 </div>
+                
+
+        <div class="button-group">
+            <button id="calculateBtn">Calculate</button>
+            <button id="resetBtn">Reset</button>   
+        </div>
+
+        <div id="result"></div>
+
+        <div class="gif-container">
+            <img src="energy-solar-animation.gif" alt="Solar Energy Animation">
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
-<link rel="stylesheet" href="design.css">
 </body>
 </html>
