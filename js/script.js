@@ -25,15 +25,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const solarFraction = 0.7;
 
 
+
     // Event listeners
     calculateBtn.addEventListener('click', calculatePanels);
     resetBtn.addEventListener('click', resetForm);
     [onGridRadio, offGridRadio, hybridRadio].forEach(radio => {
         radio.addEventListener('change', updateModeDisplay);
             });
+        roofNo.addEventListener('change', function() {
+            if (roofNo.checked) {
+                resultDiv.innerHTML = `
+            <div class="result-box">
+                <p>Sorry, unfortunately you don't have enough space for solar panels.</p>
+            </div>
+        `;
+            }
+        });     
+        roofYes.addEventListener('change', function() {
+    if (roofYes.checked) {
+        resultDiv.innerHTML = ''; // Clear the "no space" message
+    }
+});
+    // Disable calculate button if no roof space is selected        
+roofNo.addEventListener('change', function() {
+    calculateBtn.disabled = roofNo.checked; // Disable button if no roof space
+});
+
+roofYes.addEventListener('change', function() {
+    calculateBtn.disabled = !roofYes.checked; // Re-enable button
+});
     
 function calculatePanels() {
-    // Validate roof space if 'no' then inform that theres no space for solar panels    
+
         if (roofNo.checked) {
             resultDiv.innerHTML = `
         <div class="result-box">
@@ -42,7 +65,6 @@ function calculatePanels() {
     `;
     return;
 }
-
     // Get selected system type
     let system;
     if (onGridRadio.checked) system = 'onGrid';
@@ -111,7 +133,6 @@ resultDiv.innerHTML = `
 
 // Delay the real result for 3 seconds
 setTimeout(() => {
-    
     resultDiv.innerHTML = `
         <div class="result-grid">
             <div class="grid-item">
