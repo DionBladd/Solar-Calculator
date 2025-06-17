@@ -42,11 +42,11 @@
             </div>
         </div>
 
-        <div class="input-group">         
+        <div class="input-group">        
             <label for="consumption">Enter your consumption value in kWh
                 <span class="info-icon" title="kWh: kilowatt-hour, a measure of energy consumption.">  ℹ️ </span>
             </label>
-            <input type="number" id="consumption" name="consumption" placeholder="10" required>
+            <input type="number" id="consumption" name="consumption" placeholder="10" min="1" step="1" required oninput="this.value = this.value < 1 ? '' : this.value" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
         </div>   
 
         <div class="input-group">
