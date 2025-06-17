@@ -271,7 +271,7 @@ document.getElementById('solarHours').selectedIndex = 0;
         break;
         default:
             console.error("Select the mode!")
-}
+} ""
     }  
                     
 });
