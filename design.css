@@ -1,67 +1,116 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0px;
+    scroll-behavior: smooth;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fdfdfd;
-    color: #333;
-    line-height: 1.6;
+@font-face {
+    font-family: "dansk";
+    src: local("Dansk.ttf"),
+        url("Dansk.ttf") format("opentype");
+
+    font-family: "ubunto";
+    src: local("Ubuntu-Bold.ttf"),
+        url("Ubuntu-Bold.ttf") format("opentype");
+        color: white;
 }
 
-.container {
-    max-width: 600px;
+@media (max-width: 800px){}
+
+HTML, body{
+    background: #201f21;
+    background-image:url(sunpng.png);
+    opacity: 0.9;
+    
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover auto;
+    font-family: ubunto;
+    font-style: #ffff;
+      height: 100%;
+  
+      margin: 0;
+  
+      padding: 0;
+ 
+      box-sizing: border-box;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+:root {
+    --main-blue: rgba(59,130,245,255);
+}
+
+main{
+    filter:blur(1.5rem) saturate(0.7);
+    transition: all ease 0.6s;
+}
+
+.container{
+
     margin: 0 auto;
-    background: white;
-    padding: 20px;
+    padding:20px;
+    background: #8d8d8f;
+    background-image: url(sunpng.png);
+    box-shadow: 0 2px 10px rgba(0,0,0,145);
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
-h1 {
+    align-items: center;
+    display:block;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+        opacity: 0.85;
+        height: 100vh;
+        width:100vh;
+}
+.full-page{
+    justify-content: center;
+}
+h1{
     text-align: center;
-    color:  #5345a0;
-    margin-bottom: 20px;
+    color:#ffffff;
+    margin-bottom: 50px;
+    margin-top: 10vh;
 }
-
-/* Form Elements */
-.input-group {
-    display: flex;
+.input-group{
+    display:flex;
     flex-direction: column;
-    gap: 8px;
-}
+    gap:10px;
+    font-family: dansk;
+    font-size: larger;
+    font-weight: 200;
 
-label {
-    font-weight: 500;
 }
-
-input[type="number"],
-select {
+input[type="number"]{
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
+    border: 2px solid;
+    border-radius: 6px;
+    font-size: large;
+
 }
 
-/* Radio Buttons */
-input[type="radio"] {
-    margin-right: 8px;
-}
-
-/* Buttons - Now Definitely Visible */
+input[type="radio"]{
+        padding: 10px;
+    border: 2px solid;
+    border-radius: 6px;
+    font-size: large;
+  
 .button-group {
     display: flex;
     gap: 10px;
     margin-top: 10px;
-}
+        padding: 10px 20px;
+     
 
-button {
-    padding: 10px 20px;
-    background-color:linear-gradient(to right, #5345a0, #a559b4);
-    color: rgb(45, 2, 42);
+
+}
+button{
+    gap: 10px;
+    margin-top: 10px;
+        padding: 10px 20px;
+        background-color:linear-gradient(to right, #5345a0, #a559b4);
+    color: rgb(106, 106, 106);
     border: none;
     border-radius: 4px;
     font-size: 16px;
@@ -69,12 +118,10 @@ button {
     transition: all 0.3s ease;
 }
 
-button:hover {
-    background-color: #a559b4;
+button:hover{
+    background-color: aliceblue;
     transform: translateY(-2px);
 }
-
-/* Results */
 #result {
     margin-top: 20px;
     padding: 15px;
@@ -174,4 +221,4 @@ button:hover {
   padding: 30px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
-}
+}  
