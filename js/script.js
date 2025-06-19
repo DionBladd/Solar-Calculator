@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modeDisplay = document.getElementById('modeDisplay');
     const roofYes = document.getElementById('roofYes');
     const roofNo = document.getElementById('roofNo');
-    const batteryType = document.getElementById('batteryType').value;
+
 
 
 
@@ -106,17 +106,21 @@ function calculatePanels() {
 
      switch(true){
 
-        case yearlyRadio.checked:
+        case yearlyRadio.checked:{
         
             dailyConsumption = consumption / 365;
+        }
+        break;
         
-        case monthlyRadio.checked:
+        case monthlyRadio.checked:{
         
-            dailyConsumption = consumption / 30;
+            dailyConsumption = consumption / 30;}
+            break;
         
-        case dailyRadio.checked:
-    
-            dailyConsumption = consumption;
+            case dailyRadio.checked:{
+            
+            dailyConsumption = consumption;}
+            break;
     
         default:
             console.error("No consumption given");
@@ -213,6 +217,7 @@ resultDiv.innerHTML = `
 
 // Delay the real result for 3 seconds
 setTimeout(() => {
+    resultDiv.style.display = "grid";
     resultDiv.innerHTML = `
         <div class="result-grid">
             <div class="grid-item">

@@ -8,20 +8,20 @@
 </head>
 <body>
     <div class="container"> 
-        <h1>Solar Quantity Need Calculator</h1>
+        <h1><strong> Quantity Need Calculator</strong></h1>
         
         <div class="input-group">
             <label>Select preferred system type
-                <span class="info-icon" title="On Grid: fully independent. Off Grid: connected to utility. Hybrid: both.">ℹ<img src="i.png" > </span>
+                
             </label>
             <div>
-                <input type="radio" name="system" value="onGrid" id="onGrid" checked> 
+                <input type="radio" name="system" value="onGrid" id="onGrid" checked><span class="info-icon" title="Is independent from the battery."><img src="i.png" > </span> 
                 <label for="onGrid">On Grid</label>
                 
-                <input type="radio" name="system" value="offGrid" id="offGrid"> 
+                <input type="radio" name="system" value="offGrid" id="offGrid"> <span class="info-icon" title="Is dependent on the battery."><img src="i.png" > </span> 
                 <label for="offGrid">Off Grid</label>  
                 
-                <input type="radio" name="system" value="hybrid" id="hybrid"> 
+                <input type="radio" name="system" value="hybrid" id="hybrid"> <span class="info-icon" title="Works without battery, when need transfers into battery powered mode."><img src="i.png" > </span> 
                 <label for="hybrid">Hybrid</label>   
             </div>
             <p id="modeDisplay"></p>
@@ -29,30 +29,30 @@
 
         <div class="input-group">
             <label>Would you prefer to use Yearly, Monthly or Daily consumption values?
-                <span class="info-icon" title="Yearly: average over a year. Monthly: average over a month. Daily: average per day."><img src="i.png" > </span>    
+  
             </label>
             <div>
-                <input type="radio" name="period" value="yearly" id="yearly"> 
+                <input type="radio" name="period" value="yearly" id="yearly"><span class="info-icon" title="Average of 12 months or 365 days."><img src="i.png" > </span>  
                 <label for="yearly">Yearly</label>       
                 
-                <input type="radio" name="period" value="monthly" id="monthly" checked> 
+                <input type="radio" name="period" value="monthly" id="monthly" checked><span class="info-icon" title="average of 30 days."><img src="i.png" > </span>   
                 <label for="monthly">Monthly</label> 
                 
-                <input type="radio" name="period" value="daily" id="daily"> 
+                <input type="radio" name="period" value="daily" id="daily"> <span class="info-icon" title="Energy consumed by 24 hours"><img src="i.png" > </span>
                 <label for="daily">Daily</label>  
             </div>
         </div>
 
         <div class="input-group">        
             <label for="consumption">Enter your consumption value in kWh
-                <span class="info-icon" title="kWh: kilowatt-hour, a measure of energy consumption.">  <img src="i.png" >  </span>
+                <span class="info-icon" title="kWh - kilowatt-hours, a measure of energy use.">  <img src="i.png" >  </span>
             </label>
             <input type="number" id="consumption" name="consumption" placeholder="10" min="1" step="1" required oninput="this.value = this.value < 1 ? '' : this.value" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
         </div>   
 
         <div class="input-group">
             <label for="solarHours" >Select your active sun hours
-                <span class="info-icon" title="Active sun hours: average hours of sunlight available for solar energy generation."><img src="i.png" > </span>
+                <span class="info-icon" title="Hours of the big sun."><img src="i.png" > </span>
             </label>
             <select id="solarHours" name="solarHours">
                 <option value="5" selected>5 hours</option>
@@ -69,7 +69,7 @@
         </div>
         <div class="input-group">
            <label>Do you have over 25m² of roof space?
-                <span class="info-icon" title="Roof space: area available for solar panel installation."><img src="i.png" > </span>
+                <span class="info-icon" title="Roof space - area available for solar panel installation."><img src="i.png" > </span>
            </label>
            <div class ="radio-row">
             <input type="radio" name="roofSpace" value="yes" id="roofYes" checked>
@@ -82,7 +82,7 @@
                     </div>  
                     <div class="input-group">
   <label for="batteryType">Choose battery type:
-    <span class="info-icon" title="Gel: cheap but bulky. Lithium: light, fast, lasts longer."><img src="i.png" > </span>
+    <span class="info-icon" title="Gel - uses gel-like substance insead of liquid. It's affordable, reliable, but big. Lithium - newer solution, lightweight and fast chargable, last longer and more efficient, less affordable."><img src="i.png" > </span>
   </label>
   <select id="batteryType">
     <option value="gel">Gel Accumulator</option>
