@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const modeDisplay = document.getElementById('modeDisplay');
     const roofYes = document.getElementById('roofYes');
     const roofNo = document.getElementById('roofNo');
-    const batteryType = document.getElementById('batteryType').value;
+    calculateBtn.addEventListener('click', calculatePanels);
+    resetBtn.addEventListener('click', resetForm);
+
+
 
 
 
@@ -32,9 +35,39 @@ document.addEventListener('DOMContentLoaded', function() {
     [onGridRadio, offGridRadio, hybridRadio].forEach(radio => {
         radio.addEventListener('change', updateModeDisplay);
             });
+        roofNo.addEventListener('change', function() {
+            if (roofNo.checked) {
+                resultDiv.innerHTML = `
+            <div class="result-box">
+                <p>Sorry, unfortunately you don't have enough space for solar panels.</p>
+            </div>
+        `;
+            }
+        });     
+        roofYes.addEventListener('change', function() {
+    if (roofYes.checked) {
+        resultDiv.innerHTML = ''; // Clear the "no space" message
+    }
+
+    
+});
+  const interactiveInputs = [
+      ...document.querySelectorAll('input[type=radio]'),
+      ...document.querySelectorAll('select')
+  ];
+
+  interactiveInputs.forEach(input => {
+      input.addEventListener('change', function () {
+          resultDiv.innerHTML = '';
+          resultDiv.style.display = "none";
+          modeDisplay.textContent = '';});
+      });
+
+
     
 function calculatePanels() {
 
+<<<<<<< HEAD
         if (roofNo.checked) {
             resultDiv.innerHTML = `
         <div class="result-box">
@@ -43,74 +76,161 @@ function calculatePanels() {
     `;
     return;
 }
+=======
+
+>>>>>>> 26f433b9ee82ae34d4a93b251ca6163d59eb92a7
     // Get selected system type
     let system;
-    if (onGridRadio.checked) system = 'onGrid';
-    else if (offGridRadio.checked) system = 'offGrid';
-    else if (hybridRadio.checked) system = 'hybrid';
+    switch (true){
+        case onGridRadio.checked:
+        
+            system = 'onGrid';
+        
+        break;
+        case offGridRadio.checked:
+        
+            system='offGrid';
+        
+        break;
+        case hybridRadio.checked
+        :
+        
+            system = 'hybrid';
+         
+        break;
+        default:
+            console.error("No system selected");
+
+    }
 
     const solarHoursInput = document.getElementById('solarHours');
     const solarHours = parseFloat(solarHoursInput.value);
 
     // Validate input
     const consumption = parseFloat(consumptionInput.value);
-    if (isNaN(consumption) || consumption <= 0) {
+    if (isNaN(consumption) || consumption <= 0 || consumption === "") {
         resultDiv.innerHTML = "Please enter a valid positive number";
         return;
     }
 
     // Calculate daily consumption
     let dailyConsumption;
-    if (yearlyRadio.checked) {
-        dailyConsumption = consumption / 365;
-    } else if (monthlyRadio.checked) {
-        dailyConsumption = consumption / 30;
-    } else if (dailyRadio.checked) {
-        dailyConsumption = consumption;
-    }
+
+
+     switch(true){
+
+        case yearlyRadio.checked:{
+        
+            dailyConsumption = consumption / 365;
+        }
+        break;
+        
+        case monthlyRadio.checked:{
+        
+            dailyConsumption = consumption / 30;}
+            break;
+        
+            case dailyRadio.checked:{
+            
+            dailyConsumption = consumption;}
+            break;
+    
+        default:
+            console.error("No consumption given");
+
+     }
 
     // Calculate panels needed
     let panelsNeeded;
-    if (system === 'onGrid') {
-        panelsNeeded = dailyConsumption / panelWattage+(panelWattage * solarHours);
-    } else if (system === 'offGrid') {
-        panelsNeeded = (dailyConsumption * storage * (1 + systemLoss)) / panelWattage+(panelWattage * solarHours);
-    } else if (system === 'hybrid') {
-        panelsNeeded = (dailyConsumption * solarFraction * (1 + systemLoss)) / panelWattage+(panelWattage * solarHours);
+    switch(true){
+        case system === 'onGrid':
+        {
+            panelsNeeded = dailyConsumption / panelWattage+(panelWattage * solarHours);
+        }
+            break;
+        case system === 'offGrid':
+        {
+            panelsNeeded = (dailyConsumption * storage * (1 + systemLoss)) / panelWattage+(panelWattage * solarHours);
+        }
+        break;
+        case system === 'hybrid':
+        {
+            panelsNeeded = (dailyConsumption * solarFraction * (1 + systemLoss)) / panelWattage+(panelWattage * solarHours);
+        }
+        break;
+        default:
+            console.error("No panels required");
     }
 
     let batterysizekWh = 0;
     let batteryText = '';   
-    if (system === 'offGrid' ){
-        const autnomyDays = 2; // Example autonomy days 
-        batterysizekWh = dailyConsumption * autnomyDays * (1 + systemLoss);}
-        else if (system === 'hybrid') {
-                    batterysizekWh = dailyConsumption * 0.7 * (1 + systemLoss); 
 
-    if (system !== 'onGrid' ) { 
-        batteryText += `<p>Battery storage recommended: <strong> ${batterysizekWh.toFixed(1)}kWh</strong> </p>`;
+    switch(true)
+    {
+        case system === 'offGrid':
+        {
+            const autonomy = 0.5;
+            batterysizekWh = dailyConsumption * autonomy * (1 - systemLoss);
+        }
+        break;
+        case system === 'hybrid':
+            {
+                batterysizekWh = dailyConsumption * 0.7 * (1 - systemLoss);
+            }
+            break;
+        default:
+            console.error("no battery required");
 
-        if (batterysizekWh <= 5) {
-         batteryText = `<p>Suggested: 1 x Lithium 5kWh (100A) or multiple Gel 100Ah batteries</p>`;
-    } else if (batterysizekWh <= 15) {
-        batteryText = `<p>Suggested: 1 x Lithium 15kWh (200A) or mix of Gel 200Ah & 100Ah batteries</p>`;
-    } else {
-        batteryText = `<p>Suggested: Multiple Lithium 15kWh batteries or large gel bank (custom design)</p>`;
     }
-}}
+
+
+const batteryType = document.getElementById('batteryType').value;
+
+
+
+if (batteryType === "gel") {
+    if (batterysizekWh <= 5) {
+        batteryText = `<p>Suggested: 1 x 100Ah gel battery (≈${Math.ceil(batterysizekWh/1.2)} batteries)</p>`;
+    } 
+    else if (batterysizekWh <= 15) {
+        batteryText = `<p>Suggested: 1 x 200Ah gel battery (≈${Math.ceil(batterysizekWh/2.4)} batteries)</p>`;
+    } 
+    else {
+        const num200Ah = Math.floor(batterysizekWh/2.4);
+        const remaining = batterysizekWh % 2.4;
+        const num100Ah = Math.ceil(remaining/1.2);
+        batteryText = `<p>Suggested: ${num200Ah} x 200Ah + ${num100Ah} x 100Ah gel batteries</p>`;
+    }
+} 
+else if (batteryType === "lithium") {
+    if (batterysizekWh <= 5) {
+        batteryText = `<p>Suggested: 1 x 5kWh lithium battery</p>`;
+    } 
+    else if (batterysizekWh <= 15) {
+        batteryText = `<p>Suggested: 1 x 15kWh lithium battery</p>`;
+    } 
+    else {
+        const num15kWh = Math.floor(batterysizekWh/15);
+        const remaining = batterysizekWh % 15;
+        const num5kWh = Math.ceil(remaining/5);
+        batteryText = `<p>Suggested: ${num15kWh} x 15kWh + ${num5kWh} x 5kWh lithium batteries</p>`;
+    }
+}
+
 
     // Display result
     const selectedOption = solarHoursInput.options[solarHoursInput.selectedIndex];
     const hoursText = selectedOption.text;
 
+resultDiv.style.display = "block";
 resultDiv.innerHTML = `
   <div class="result-box">
     <p><em>Calculating...</em> ⏳</p>
   </div>
 `;
-
 // Delay the real result for 3 seconds
 setTimeout(() => {
+    resultDiv.style.display = "grid";
     resultDiv.innerHTML = `
         <div class="result-grid">
             <div class="grid-item">
@@ -146,15 +266,30 @@ setTimeout(() => {
 document.getElementById('solarHours').selectedIndex = 0;
  updateModeDisplay();
 
+
+
     }
     function updateModeDisplay() {
-        if (onGridRadio.checked) {
+        switch(true)
+{
+    case onGridRadio.checked:
+        {
             modeDisplay.textContent = "You are in onGrid mode";
-        } else if (offGridRadio.checked) {
+        }
+        break;
+    case offGridRadio.checked:
+        {
             modeDisplay.textContent = "You are in offGrid mode";
-        } else if (hybridRadio.checked) {
+        }
+        break;
+    case hybridRadio.checked:
+        {
             modeDisplay.textContent = "You are in Hybrid mode";
         }
+        break;
+        default:
+            console.error("Select the mode!")
+} 
     }  
                     
 });

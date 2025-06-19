@@ -1,177 +1,216 @@
+/* RESET & BASE */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fdfdfd;
-    color: #333;
-    line-height: 1.6;
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: #000000;
+  color: #333;
+  background-image: url(sunpng.png) ;
+    background-position: center;
+  background-size: 150rem;
+
 }
 
 .container {
-    max-width: 600px;
-    margin: 0 auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #a1a1a1;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background-image: url(IMG_8514.PNG);
+    background-repeat: no-repeat;
+}
+
 h1 {
-    text-align: center;
-    color:  #5345a0;
-    margin-bottom: 20px;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  
 }
 
-/* Form Elements */
+/* FORM ELEMENTS */
 .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
-label {
-    font-weight: 500;
+.input-group label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
-input[type="number"],
-select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
+.input-group input[type="number"],
+.input-group input[type="text"],
+.input-group select {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
 }
 
-/* Radio Buttons */
-input[type="radio"] {
-    margin-right: 8px;
+.input-group input[type="radio"] {
+  margin-right: 0.5rem;
 }
 
-/* Buttons - Now Definitely Visible */
+.radio-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.input-group div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.info-icon {
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+/* BUTTONS */
 .button-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  
 }
 
 button {
-    padding: 10px 20px;
-    background-color:linear-gradient(to right, #5345a0, #a559b4);
-    color: rgb(45, 2, 42);
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border: white;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #282b2e;
+  color: white;
+  transition: background 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-    background-color: #a559b4;
-    transform: translateY(-2px);
+  background-color: rgb(70, 70, 70);
 }
 
-/* Results */
+/* RESULTS */
 #result {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 4px;
-    background-color: #f0f0f0;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color:gray;
+  color: #000000;
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  font-weight: bold;
+  display: none; /* toggle on result display */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* GIF Container - Now Definitely Visible */
-.gif-container {
-    margin: 20px auto;
-    text-align: center;
-    max-width: 300px;
-}
+/* RESPONSIVE STUFF */
 
-.gif-container img {
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  button {
     width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-.compact {
-    margin-bottom: 8px;
-}
-.compact label {
-    margin-bottom: 3px;
-}
-.radio-row {
-    display: flex;
-    gap: 15px;
-    align-items: center;
+    padding: 0.75rem;
+    border: white;
+
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 1rem;
+    border: white;
+  }
+
+  .radio-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
 
-/* Grid Results */
-.result-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 15px 0;
-    background: #f5f5f5;
-    padding: 12px;
-    border-radius: 6px;
-}
-.grid-item {
-    text-align: center;
-}
-.grid-label {
-    font-size: 13px;
-    color: #666;
-}
-.grid-value {
-    font-weight: bold;
-    font-size: 16px;
-}
+@media (max-width: 480px) {
+  html, body {
+    font-size: 14px;
+  }
 
-/* Seamless GIF */
-.gif-container.seamless {
-    margin: 10px 0;
-}
-.gif-container.seamless img {
-    border: none;
-    box-shadow: none;
-    max-width: 100%;
+  .container {
     border-radius: 0;
+    box-shadow: 10;
+  }
+
+  .input-group {
+    margin-bottom: 1rem;
+  }
+
+  .info-icon {
+    display: inline-block;
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes fadePulse {
+
+    0%{
+        opacity: 0.8; transform: scale(1);
+    }
+    50%
+    {
+        opacity: 1; transform: scale(1.1);
+    }
+    100%
+    {
+        opacity: 0.8; transform: scale(1);
+    }
+}
+
+.fade-pulse:hover{
+    animation: fadePulse 2s ease-in-out infinite;
+}
+
+.info-icon img{
+    width: 20px;
+    height:auto;
 }
 .result-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin: 15px 0;
-    background: #f5f5f5;
-    padding: 12px;
-    border-radius: 6px;
-    box-shadow: 0 0 6px rgba(0,0,0,0.1);
-
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .grid-item {
-    text-align: center;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+
 }
 
 .grid-label {
-    font-size: 13px;
-    color: #666;
-    margin-bottom: 4px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #495057;
 }
 
 .grid-value {
-    font-weight: bold;
-    font-size: 16px;
-    color: #5345a0;
-}
-.glass-box {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
+    color: #212529;
 }
