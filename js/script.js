@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const modeDisplay = document.getElementById('modeDisplay');
     const roofYes = document.getElementById('roofYes');
     const roofNo = document.getElementById('roofNo');
+    calculateBtn.addEventListener('click', calculatePanels);
+    resetBtn.addEventListener('click', resetForm);
 
 
 
@@ -46,7 +48,21 @@ document.addEventListener('DOMContentLoaded', function() {
     if (roofYes.checked) {
         resultDiv.innerHTML = ''; // Clear the "no space" message
     }
+
+    
 });
+  const interactiveInputs = [
+      ...document.querySelectorAll('input[type=radio]'),
+      ...document.querySelectorAll('select')
+  ];
+
+  interactiveInputs.forEach(input => {
+      input.addEventListener('change', function () {
+          resultDiv.innerHTML = '';
+          resultDiv.style.display = "none";
+          modeDisplay.textContent = '';});
+      });
+
     // Disable calculate button if no roof space is selected        
 roofNo.addEventListener('change', function() {
     calculateBtn.disabled = roofNo.checked; // Disable button if no roof space
@@ -209,12 +225,12 @@ else if (batteryType === "lithium") {
     const selectedOption = solarHoursInput.options[solarHoursInput.selectedIndex];
     const hoursText = selectedOption.text;
 
+resultDiv.style.display = "block";
 resultDiv.innerHTML = `
   <div class="result-box">
     <p><em>Calculating...</em> ⏳</p>
   </div>
 `;
-
 // Delay the real result for 3 seconds
 setTimeout(() => {
     resultDiv.style.display = "grid";
