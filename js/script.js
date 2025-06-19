@@ -67,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
 function calculatePanels() {
 
-<<<<<<< HEAD
         if (roofNo.checked) {
             resultDiv.innerHTML = `
         <div class="result-box">
@@ -76,9 +75,7 @@ function calculatePanels() {
     `;
     return;
 }
-=======
 
->>>>>>> 26f433b9ee82ae34d4a93b251ca6163d59eb92a7
     // Get selected system type
     let system;
     switch (true){
