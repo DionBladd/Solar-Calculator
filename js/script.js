@@ -63,25 +63,11 @@ document.addEventListener('DOMContentLoaded', function() {
           modeDisplay.textContent = '';});
       });
 
-    // Disable calculate button if no roof space is selected        
-roofNo.addEventListener('change', function() {
-    calculateBtn.disabled = roofNo.checked; // Disable button if no roof space
-});
 
-roofYes.addEventListener('change', function() {
-    calculateBtn.disabled = !roofYes.checked; // Re-enable button
-});
     
 function calculatePanels() {
 
-        if (roofNo.checked) {
-            resultDiv.innerHTML = `
-        <div class="result-box">
-            <p>Sorry, unfortunately you don't have enough space for solar panels.</p>
-        </div>
-    `;
-    return;
-}
+
     // Get selected system type
     let system;
     switch (true){
@@ -111,7 +97,7 @@ function calculatePanels() {
 
     // Validate input
     const consumption = parseFloat(consumptionInput.value);
-    if (isNaN(consumption) || consumption <= 0) {
+    if (isNaN(consumption) || consumption <= 0 || consumption === "") {
         resultDiv.innerHTML = "Please enter a valid positive number";
         return;
     }
