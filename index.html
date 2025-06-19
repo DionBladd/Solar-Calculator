@@ -12,7 +12,7 @@
         
         <div class="input-group">
             <label>Select preferred system type
-                <span class="info-icon" title="On Grid: fully independent. Off Grid: connected to utility. Hybrid: both.">ℹ️</span>
+                <span class="info-icon" title="On Grid: fully independent. Off Grid: connected to utility. Hybrid: both.">ℹ<img src="i.png" > </span>
             </label>
             <div>
                 <input type="radio" name="system" value="onGrid" id="onGrid" checked> 
@@ -29,7 +29,7 @@
 
         <div class="input-group">
             <label>Would you prefer to use Yearly, Monthly or Daily consumption values?
-                <span class="info-icon" title="Yearly: average over a year. Monthly: average over a month. Daily: average per day.">ℹ️</span>    
+                <span class="info-icon" title="Yearly: average over a year. Monthly: average over a month. Daily: average per day."><img src="i.png" > </span>    
             </label>
             <div>
                 <input type="radio" name="period" value="yearly" id="yearly"> 
@@ -45,14 +45,14 @@
 
         <div class="input-group">        
             <label for="consumption">Enter your consumption value in kWh
-                <span class="info-icon" title="kWh: kilowatt-hour, a measure of energy consumption.">  ℹ️ </span>
+                <span class="info-icon" title="kWh: kilowatt-hour, a measure of energy consumption.">  <img src="i.png" >  </span>
             </label>
             <input type="number" id="consumption" name="consumption" placeholder="10" min="1" step="1" required oninput="this.value = this.value < 1 ? '' : this.value" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
         </div>   
 
         <div class="input-group">
             <label for="solarHours" >Select your active sun hours
-                <span class="info-icon" title="Active sun hours: average hours of sunlight available for solar energy generation.">ℹ️ </span>
+                <span class="info-icon" title="Active sun hours: average hours of sunlight available for solar energy generation."><img src="i.png" > </span>
             </label>
             <select id="solarHours" name="solarHours">
                 <option value="5" selected>5 hours</option>
@@ -69,7 +69,7 @@
         </div>
         <div class="input-group">
            <label>Do you have over 25m² of roof space?
-                <span class="info-icon" title="Roof space: area available for solar panel installation.">ℹ️</span>
+                <span class="info-icon" title="Roof space: area available for solar panel installation."><img src="i.png" > </span>
            </label>
            <div class ="radio-row">
             <input type="radio" name="roofSpace" value="yes" id="roofYes" checked>
@@ -82,7 +82,7 @@
                     </div>  
                     <div class="input-group">
   <label for="batteryType">Choose battery type:
-    <span title="Gel: cheap but bulky. Lithium: light, fast, lasts longer.">ℹ️</span>
+    <span class="info-icon" title="Gel: cheap but bulky. Lithium: light, fast, lasts longer."><img src="i.png" > </span>
   </label>
   <select id="batteryType">
     <option value="gel">Gel Accumulator</option>
@@ -92,8 +92,8 @@
                 
 
         <div class="button-group">
-            <button id="calculateBtn">Calculate</button>
-            <button id="resetBtn">Reset</button>   
+            <button class= "fade-pulse" id="calculateBtn">Calculate</button>
+            <button class="fade-pulse" id="resetBtn">Reset</button>   
         </div>
 
         <div id="result"></div>
